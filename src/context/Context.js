@@ -6,11 +6,11 @@ const DEFAULT_CONTEXT = {
 
 export const Context = React.createContext(DEFAULT_CONTEXT);
 
-export const Provider = () => {
+export const Provider = ({children}) => {
     const {level} = useContext(Context);
     const context = useMemo(() => ({level: level + 1}), [level]);
 
     return (
-        <Context.Provider value={context} />            
+        <Context.Provider value={context} children={children} />            
     )
 };
