@@ -1,13 +1,13 @@
-# react-breadcrumb
+# @thojou/react-breadcrumb
 
-> A React component library to add breadcrumb feature to your app
+> A React component library for easy breadcrumb integration.
 
 [![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-breadcrumb
+npm install --save @thojou/react-breadcrumb
 ```
 
 ## Usage

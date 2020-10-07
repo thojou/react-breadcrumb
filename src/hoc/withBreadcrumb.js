@@ -1,21 +1,23 @@
-import useBreadcrumb from "../hook/useBreadcrumb";
-import {Provider} from '../context/Context';
+import React from 'react';
+import useBreadcrumb from '../hook/useBreadcrumb';
+import { Provider } from '../context/Context';
 
-const withBreadcrumb = (label) => WrappedComponent => {
-    const WithBreadcrumb = props => {
-        useBreadcrumb(label);
+const withBreadcrumb = label => WrappedComponent => {
+  const WithBreadcrumb = props => {
+    useBreadcrumb(label);
 
-        return (
-            <Provider>
-                <WrappedComponent {...props} />
-            </Provider>
-        );
-    };
+    return (
+      <Provider>
+        <WrappedComponent {...props} />
+      </Provider>
+    );
+  };
 
-    WithBreadcrumb.displayName = `withBreadcrumb(${WrappedComponent.displayName || WrappedComponent.name})`;
-    WithBreadcrumb.WrappedComponent = WrappedComponent;
+  WithBreadcrumb.displayName = `withBreadcrumb(${WrappedComponent.displayName ||
+    WrappedComponent.name})`;
+  WithBreadcrumb.WrappedComponent = WrappedComponent;
 
-    return WithBreadcrumb;
+  return WithBreadcrumb;
 };
 
 export default withBreadcrumb;

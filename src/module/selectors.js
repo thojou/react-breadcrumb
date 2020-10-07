@@ -1,1 +1,1 @@
-export const selectBreadcrumb = state => state.breadcrumb;
+export default state => state.breadcrumb;
