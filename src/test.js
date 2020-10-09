@@ -6,6 +6,8 @@ import '@testing-library/jest-dom/extend-expect';
 import { Context, Provider } from './context/Context';
 import useBreadcrumb from './hook/useBreadcrumb';
 import { addBreadcrumb, removeBreadcrumb } from './module/slice';
+import withBreadcrumb from './hoc/withBreadcrumb';
+import { compose, remove } from 'ramda';
 
 describe('BreadcrumbContext', () => {
   const TestConsumer = () => {
@@ -92,6 +94,29 @@ describe('useBreadcrumb', () => {
 
     // assert
     expect(mockDispatchFn).toHaveBeenCalledTimes(0);
+
+    // teardown
+    useDispatchSpy.mockClear();
+  });
+});
+
+describe('withBreadcrumb', () => {
+  it('should wrap component with provider and handle breadcrumb', () => {
+    const Component = withBreadcrumb('test')(() => '');
+
+    const useDispatchSpy = jest.spyOn(redux, 'useDispatch');
+    const mockDispatchFn = jest.fn();
+    useDispatchSpy.mockReturnValue(mockDispatchFn);
+
+    // action
+    const result = renderHook(Component);
+    result.unmount();
+
+    // assert
+    expect(mockDispatchFn).toHaveBeenCalledWith(
+      addBreadcrumb({ label: 'test', path: '/', level: 0 })
+    );
+    expect(mockDispatchFn).toHaveBeenCalledWith(removeBreadcrumb('test'));
 
     // teardown
     useDispatchSpy.mockClear();
