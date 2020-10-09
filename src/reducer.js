@@ -9,7 +9,7 @@ export default (state = [], action) => {
         return state;
       }
 
-      return [...state, action.payload].sort((a, b) => a.level < b.level);
+      return [...state, action.payload].sort((a, b) => a.level > b.level);
     case REMOVE_BREADCRUMB:
       if (findItem(state, action.payload.label) < 0) {
         return state;
