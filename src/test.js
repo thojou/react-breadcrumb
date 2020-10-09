@@ -5,9 +5,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import '@testing-library/jest-dom/extend-expect';
 import { Context, Provider } from './context/Context';
 import useBreadcrumb from './hook/useBreadcrumb';
-import { addBreadcrumb, removeBreadcrumb } from './module/slice';
-import withBreadcrumb from './hoc/withBreadcrumb';
-import { compose, remove } from 'ramda';
+import { addBreadcrumb, removeBreadcrumb } from './actions';
+import withBreadcrumb from './withBreadcrumb';
 
 describe('BreadcrumbContext', () => {
   const TestConsumer = () => {
@@ -47,21 +46,21 @@ describe('useBreadcrumb', () => {
   const Component = () => useBreadcrumb('Test');
 
   it('should add breadcrumb on first render', () => {
-    const useDispatchSpy = jest.spyOn(redux, 'useDispatch');
+    const useReducerSpy = jest.spyOn(React, 'useReducer');
     const mockDispatchFn = jest.fn();
-    useDispatchSpy.mockReturnValue(mockDispatchFn);
+    useReducerSpy.mockReturnValue([], mockDispatchFn);
 
     // action
     renderHook(Component);
 
     // assert
     expect(mockDispatchFn).toHaveBeenLastCalledWith(
-      addBreadcrumb({ label: 'Test', path: '/', level: 0 })
+      addBreadcrumb('Test', '/', 0)
     );
     expect(mockDispatchFn).not.toHaveBeenCalledWith(removeBreadcrumb('Test'));
 
     // teardown
-    useDispatchSpy.mockClear();
+    useReducerSpy.mockClear();
   });
 
   it('should add breadcrumb on first render', () => {

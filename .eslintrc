@@ -24,6 +24,6 @@
     "react/jsx-boolean-value": 0,
     "react/jsx-filename-extension": false,
     "react/jsx-props-no-spreading": { "exceptions": ["WrappedComponent"] },
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/test.js"]}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js"]}]
   }
 }
