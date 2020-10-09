@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Breadcrumb, { BreadcrumbContext } from '../Breadcrumb';
-import BreadcrumbStore from '../BreadcrumbStore';
+import BreadcrumbStore, { BreadcrumbStoreContext } from '../BreadcrumbStore';
 
 const TestConsumer = () => {
   const { level } = useContext(BreadcrumbContext);
@@ -56,5 +56,20 @@ describe('Breadcrumb', () => {
     expect(screen.getByText(/^Current Level:/)).toHaveTextContent(
       'Current Level:2'
     );
+  });
+
+  it('should ignore empty label', () => {
+    const TestComponent = () => {
+      const context = useContext(BreadcrumbStoreContext);
+
+      return <p>{JSON.stringify(context)}</p>;
+    };
+
+    render(
+      <Breadcrumb>
+        <TestComponent />
+      </Breadcrumb>
+    );
+    expect(screen.getByText(/"state":/)).toHaveTextContent('"state":[]');
   });
 });

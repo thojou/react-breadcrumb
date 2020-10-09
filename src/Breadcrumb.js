@@ -5,8 +5,8 @@ import { BreadcrumbStoreContext } from './BreadcrumbStore';
 export const BreadcrumbContext = React.createContext({ level: 0 });
 
 const useBreadcrumb = (
-  label = undefined,
-  path = '/',
+  label,
+  path,
   enhancedAdd = undefined,
   enhancedRemove = undefined
 ) => {
