@@ -22,7 +22,7 @@
 
     // allow specifying true explicitly for boolean props
     "react/jsx-boolean-value": 0,
-    "react/jsx-filename-extension": false,
+    "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": { "exceptions": ["WrappedComponent"] },
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js"]}]
   }

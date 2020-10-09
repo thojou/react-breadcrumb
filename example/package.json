@@ -5,11 +5,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@thojou/react-breadcrumb": "link:..",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
+    "ramda": "^0.27.1",
+    "react": "link:../node_modules/react",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
-    "react-breadcrumb": "link:.."
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
