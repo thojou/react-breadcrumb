@@ -38,7 +38,7 @@ yarn add @thojou/react-breadcrumb
 ## Usage
 
 
-Wrap your page component render with the `Breadcrumb` component
+Wrap your page component body with the `Breadcrumb` component
 
 ```jsx
 // components/Home.js
@@ -59,7 +59,7 @@ export class Home extends Component {
 }
 ```
 
-Instead of using the `Breadcrumb` component, you can also wrap your existing component with an hoc.
+> Instead of using the `Breadcrumb` component, you can also wrap your existing component with an hoc.
 
 ```jsx
 // components/Home.js
@@ -77,7 +77,7 @@ class Home extends Component {
 export const HomeWithBreadcrumb = withBreadcrumb('Home', '/')(Home);
 ```
 
-Create your own presentational component to show the current Breadcrumb path inside you UI.
+Create your own presentational component to show the current breadcrumb path inside your UI.
 
 ```jsx
 // components/BreadcrumbPath.js
@@ -149,6 +149,32 @@ export const BreadcrumbContainer = connect(
 
 Instead of using the `BreadcrumbStoreContext` inside your presentational component, you should select the current state from you redux store.
 
+```jsx
+// components/BreadcrumbPath.js
+import React from 'react'
+import {connect} from 'react-redux';
+
+export function BreadcrumbPath({state})  {
+  render () {
+    return (
+      <ul>
+         {state.map((item) => (
+          <li key={item.path}>
+            <a href={item.path}>{item.label}</a>
+          </li>
+         ))}
+      </ul>
+    )
+  }
+};
+
+export const BreadcrumbPathContainer = connect(
+  (state) => ({
+    state: state.breadcrumb
+  })
+)(BreadcrumbPath);
+```
+
 ## API
 
 ### Components
@@ -159,7 +185,7 @@ Instead of using the `BreadcrumbStoreContext` inside your presentational compone
 
 ### Context 
 
-#### `BreadcrumbStoreContext`,
+#### `BreadcrumbStoreContext`
 
 ### HOC
 
@@ -172,6 +198,15 @@ Instead of using the `BreadcrumbStoreContext` inside your presentational compone
 #### `removeBreadcrumb`
 
 ## Example Project
+
+Want to see this package in action? Checkout the [codesandbox]() to see a working example of checkout this repository and start the example application by running the following commands:
+
+```bash
+cd example/
+npm install && npm start
+```
+
+Open [localhost:3000](http://localhost:3000) in your Browser to start exploring the example.
 
 ## License
 
