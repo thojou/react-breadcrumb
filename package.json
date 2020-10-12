@@ -69,5 +69,8 @@
   "files": [
     "dist"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "release": {
+    "branches": ["release"]
+  }
 }
