@@ -37,29 +37,96 @@ yarn add @thojou/react-breadcrumb
 
 ## Usage
 
-### Default Usage
-
 Wrap your application with the `BreadcrumbStore`
 
 ```jsx
 // app.js
 import React, { Component } from 'react'
-
-import BreadcrumbStore from '@thojou/react-breadcrumb'
-import Home
+import { BreadcrumbStore } from '@thojou/react-breadcrumb'
+import Home from './components/Home';
+import BreadcrumbPath from './components/BreadcrumbPath';
 
 class App extends Component {
   render () {
     return (
       <BreadcrumbStore>
-        // ...children
+        <BreadcrumbPath />
+        <Home />
       </BreadcrumbStore>
     )
   }
 }
 ```
 
+Wrap your page component render with the `Breadcrumb` component
+
+```jsx
+// components/Home.js
+import React, { Component } from 'react'
+import { Breadcrumb } from '@thojou/react-breadcrumb'
+
+class Home extends Component {
+  render () {
+    return (
+      <Breadcrumb 
+        label="Home"
+        path="/"
+      >
+        <h1>Welcome to Homepage</h1>
+      </Breadcrumb>
+    )
+  }
+}
+```
+
+Now you can create your own custom Breadcrumb presentational component.
+
+```jsx
+// components/BreadcrumbPath.js
+import React, { useContext } from 'react'
+import { BreadcrumbStoreContext } from '@thojou/react-breadcrumb'
+
+export function BreadcrumbPath()  {
+  const {state} = useContext(BreadcrumbStoreContext);
+
+  render () {
+    return (
+      <ul>
+         {state.map((item) => (
+          <li key={item.path}>
+            <a href={item.path}>{item.label}</a>
+          </li>
+         ))}
+      </ul>
+    )
+  }
+}
+```
+
 ### Usage with [react-redux](https://redux.js.org/basics/usage-with-react)
+
+Internally @thojou/react-breadcrumb uses react reducers to manage the state.
+In large applications, you may be using react-redux for state management instead.
+You can easily integrate this project into react-redux with just some small adjustments.
+
+This package ships with a built-in reducer and actions to update the represented state. You can reuse this implementation to move the state management into the redux store.
+
+> Note: If you are using react-redux for state management, wrapping your App inside `BreadcrumbStore` is not required.
+
+Create a BreadcrumbContainer component to connect the breadcrumb to the redux store and use this container component instead of the origin Breadcrumb component. 
+
+```jsx
+import {connect} from 'react-redux';
+import {Breadcrumb, addBreadcrumb, removeBreadcrumb } from '@thojou/react-breadcrumb';
+
+export const BreadcrumbContainer = connect(
+  null,
+  {
+    addBreadcrumb,
+    removeBreadcrumb
+  }
+)
+```
 
 ## API
 
