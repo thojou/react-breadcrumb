@@ -8,7 +8,7 @@
 
 It helps you implementing a visual breadcrumb component based on a nested structure. The main focus of this library is on managing state and providing the current breadcrumb data in a hierarchical order.
 
-You can easily integrate this library with [react-router-dom](https://reactrouter.com/), pick your favorite UI component library, or implement the UI components on your own.
+You can easily integrate this library with [react-router-dom](https://reactrouter.com/), [react-redux](https://redux.js.org/basics/usage-with-react), pick your favorite UI component library, or implement the UI components on your own.
 
 ## Table of Contents
 
@@ -37,8 +37,8 @@ Wrap your page component body with the `Breadcrumb` component
 
 ```jsx
 // components/Home.js
-import React, { Component } from 'react'
-import { Breadcrumb } from '@thojou/react-breadcrumb'
+import React, { Component } from 'react';
+import { Breadcrumb } from '@thojou/react-breadcrumb';
 
 export class Home extends Component {
   render () {
@@ -49,23 +49,23 @@ export class Home extends Component {
       >
         <h1>Welcome to Homepage</h1>
       </Breadcrumb>
-    )
+    );
   }
-}
+};
 ```
 
 > Instead of using the `Breadcrumb` component, you can also wrap your existing component with an hoc.
 
 ```jsx
 // components/Home.js
-import React, { Component } from 'react'
-import { withBreadcrumb } from '@thojou/react-breadcrumb'
+import React, { Component } from 'react';
+import { withBreadcrumb } from '@thojou/react-breadcrumb';
 
 class Home extends Component {
   render () {
     return (
         <h1>Welcome to Homepage</h1>
-    )
+    );
   }
 };
 
@@ -76,8 +76,8 @@ Create your own presentational component to show the current breadcrumb path ins
 
 ```jsx
 // components/BreadcrumbPath.js
-import React, { useContext } from 'react'
-import { BreadcrumbStoreContext } from '@thojou/react-breadcrumb'
+import React, { useContext } from 'react';
+import { BreadcrumbStoreContext } from '@thojou/react-breadcrumb';
 
 export function BreadcrumbPath()  {
   const {state} = useContext(BreadcrumbStoreContext);
@@ -91,17 +91,17 @@ export function BreadcrumbPath()  {
           </li>
          ))}
       </ul>
-    )
+    );
   }
-}
+};
 ```
 
 Put it all together and wrap your application with the `BreadcrumbStore`.
 
 ```jsx
 // app.js
-import React, { Component } from 'react'
-import { BreadcrumbStore } from '@thojou/react-breadcrumb'
+import React, { Component } from 'react';
+import { BreadcrumbStore } from '@thojou/react-breadcrumb';
 import Home from './components/Home';
 import BreadcrumbPath from './components/BreadcrumbPath';
 
@@ -112,10 +112,12 @@ class App extends Component {
         <BreadcrumbPath />
         <Home />
       </BreadcrumbStore>
-    )
+    );
   }
-}
+};
 ```
+
+Checkout the [example project](#example-project) for a more complex use case.
 
 ### Usage with [react-redux](https://redux.js.org/basics/usage-with-react)
 
@@ -139,14 +141,14 @@ export const BreadcrumbContainer = connect(
     addBreadcrumb,
     removeBreadcrumb
   }
-)
+);
 ```
 
 Instead of using the `BreadcrumbStoreContext` inside your presentational component, you should select the current state from you redux store.
 
 ```jsx
 // components/BreadcrumbPath.js
-import React from 'react'
+import React from 'react';
 import {connect} from 'react-redux';
 
 export function BreadcrumbPath({state})  {
@@ -159,7 +161,7 @@ export function BreadcrumbPath({state})  {
           </li>
          ))}
       </ul>
-    )
+    );
   }
 };
 
@@ -174,6 +176,10 @@ export const BreadcrumbPathContainer = connect(
 
 ### `Breadcrumb` Component props
 
+```js
+import { Breadcrumb } from '@thojou/react-breadcrumb';
+```
+
 | name | type | default | description
 | ---  | --- | --- | --- |
 label | string | undefined | The label of this breadcrumb item
@@ -182,6 +188,10 @@ add   | function | undefined | Custom function to add a breadcrumb to e.g. redux
 remove | function | undefeined | Custom function to remove a breadcrumb from e.g. redux store
 
 ### `withBreadcrumb` HOC props
+
+```js
+import { withBreadcrumb } from '@thojou/react-breadcrumb';
+```
 
 | name | type | default | description
 | ---  | --- | --- | --- |
@@ -196,8 +206,14 @@ Want to see this package in action? Checkout the [codesandbox]() to see a workin
 
 ```bash
 cd example/
+
+#npm
 npm install
 npm start
+
+#yarn
+yarn install
+yarn start
 ```
 
 Open a Browser and navigate to [localhost:3000](http://localhost:3000) to get started.
