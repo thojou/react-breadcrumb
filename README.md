@@ -37,26 +37,6 @@ yarn add @thojou/react-breadcrumb
 
 ## Usage
 
-Wrap your application with the `BreadcrumbStore`
-
-```jsx
-// app.js
-import React, { Component } from 'react'
-import { BreadcrumbStore } from '@thojou/react-breadcrumb'
-import Home from './components/Home';
-import BreadcrumbPath from './components/BreadcrumbPath';
-
-class App extends Component {
-  render () {
-    return (
-      <BreadcrumbStore>
-        <BreadcrumbPath />
-        <Home />
-      </BreadcrumbStore>
-    )
-  }
-}
-```
 
 Wrap your page component render with the `Breadcrumb` component
 
@@ -65,7 +45,7 @@ Wrap your page component render with the `Breadcrumb` component
 import React, { Component } from 'react'
 import { Breadcrumb } from '@thojou/react-breadcrumb'
 
-class Home extends Component {
+export class Home extends Component {
   render () {
     return (
       <Breadcrumb 
@@ -79,7 +59,25 @@ class Home extends Component {
 }
 ```
 
-Now you can create your own custom Breadcrumb presentational component.
+Instead of using the `Breadcrumb` component, you can also wrap your existing component with an hoc.
+
+```jsx
+// components/Home.js
+import React, { Component } from 'react'
+import { withBreadcrumb } from '@thojou/react-breadcrumb'
+
+class Home extends Component {
+  render () {
+    return (
+        <h1>Welcome to Homepage</h1>
+    )
+  }
+};
+
+export const HomeWithBreadcrumb = withBreadcrumb('Home', '/')(Home);
+```
+
+Create your own presentational component to show the current Breadcrumb path inside you UI.
 
 ```jsx
 // components/BreadcrumbPath.js
@@ -98,6 +96,27 @@ export function BreadcrumbPath()  {
           </li>
          ))}
       </ul>
+    )
+  }
+}
+```
+
+Put it all together and wrap your application with the `BreadcrumbStore`.
+
+```jsx
+// app.js
+import React, { Component } from 'react'
+import { BreadcrumbStore } from '@thojou/react-breadcrumb'
+import Home from './components/Home';
+import BreadcrumbPath from './components/BreadcrumbPath';
+
+class App extends Component {
+  render () {
+    return (
+      <BreadcrumbStore>
+        <BreadcrumbPath />
+        <Home />
+      </BreadcrumbStore>
     )
   }
 }
@@ -128,8 +147,29 @@ export const BreadcrumbContainer = connect(
 )
 ```
 
+Instead of using the `BreadcrumbStoreContext` inside your presentational component, you should select the current state from you redux store.
+
 ## API
 
+### Components
+
+#### `Breadcrumb`
+
+#### `BreadcrumbStore`
+
+### Context 
+
+#### `BreadcrumbStoreContext`,
+
+### HOC
+
+#### `withBreadcrumb`
+
+### Action
+
+#### `addBreadcrumb`
+
+#### `removeBreadcrumb`
 
 ## Example Project
 
