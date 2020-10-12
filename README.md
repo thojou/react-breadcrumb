@@ -4,6 +4,14 @@
 
 [![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb)
 
+## Introduction
+
+@thojou/react-breadcrumb is a simple breadcrumb component library for [react](https://reactjs.org) apps.
+
+It helps you implementing a visual breadcrumb component based on a nested structure. The main focus of this library is on managing state and providing the current breadcrumb data in a hierarchical order.
+
+You can easily integrate this library with [react-router-dom](https://reactrouter.com/), pick your favorite UI component library, or implement the UI components on your own.
+
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -12,14 +20,6 @@
 * [API](#api)
 * [Example Project](#example-project)
 * [License](#license)
-
-## Introduction
-
-@thojou/react-breadcrumb is a simple breadcrumb component library for [react](https://reactjs.org) apps.
-
-It helps you implementing a visual breadcrumb component based on a nested structure. The main focus of this library is on managing state and providing the current breadcrumb data in a hierarchical order.
-
-You can easily integrate this library with [react-router-dom](https://reactrouter.com/), pick your favorite UI component library, or implement the UI components on your own.
 
 ## Install
 
