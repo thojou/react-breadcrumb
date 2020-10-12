@@ -2,7 +2,7 @@
 
 > A React component library for easy breadcrumb integration.
 
-[![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb)
 
 ## Table of Contents
 
@@ -20,8 +20,6 @@
 It helps you implementing a visual breadcrumb component based on a nested structure. The main focus of this library is on managing state and providing the current breadcrumb data in a hierarchical order.
 
 You can easily integrate this library with [react-router-dom](https://reactrouter.com/), pick your favorite UI component library, or implement the UI components on your own.
-
-
 
 ## Install
 
@@ -177,25 +175,23 @@ export const BreadcrumbPathContainer = connect(
 
 ## API
 
-### Components
+### `Breadcrumb` Component props
 
-#### `Breadcrumb`
+| name | type | default | description
+| ---  | --- | --- | --- |
+label | string | undefined | The label of this breadcrumb item
+path  | string | "/"       | The path of this breadcrumb item
+add   | function | undefined | Custom function to add a breadcrumb to e.g. redux store
+remove | function | undefeined | Custom function to remove a breadcrumb from e.g. redux store
 
-#### `BreadcrumbStore`
+### `withBreadcrumb` HOC props
 
-### Context 
+| name | type | default | description
+| ---  | --- | --- | --- |
+label | string | undefined | The label of this breadcrumb item
+path  | string | "/"       | The path of this breadcrumb item
 
-#### `BreadcrumbStoreContext`
-
-### HOC
-
-#### `withBreadcrumb`
-
-### Action
-
-#### `addBreadcrumb`
-
-#### `removeBreadcrumb`
+You can pass `addBreadcrumb` or `removeBreadcrumb` to you enhanced component to override the default state management functions.
 
 ## Example Project
 
@@ -203,10 +199,11 @@ Want to see this package in action? Checkout the [codesandbox]() to see a workin
 
 ```bash
 cd example/
-npm install && npm start
+npm install
+npm start
 ```
 
-Open [localhost:3000](http://localhost:3000) in your Browser to start exploring the example.
+Open a Browser and navigate to [localhost:3000](http://localhost:3000) to get started.
 
 ## License
 
