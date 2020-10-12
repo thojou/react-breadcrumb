@@ -1,7 +1,7 @@
 {
   "name": "@thojou/react-breadcrumb",
   "version": "1.0.0",
-  "description": "A React component library to add breadcrumb feature to your app",
+  "description": "A Simple react component library for easy breadcrumb feature implementation",
   "author": "thojou",
   "license": "MIT",
   "repository": "thojou/react-breadcrumb",
@@ -66,5 +66,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {}
 }
