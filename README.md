@@ -198,11 +198,11 @@ import { withBreadcrumb } from '@thojou/react-breadcrumb';
 label | string | undefined | The label of this breadcrumb item
 path  | string | "/"       | The path of this breadcrumb item
 
-You can pass `addBreadcrumb` or `removeBreadcrumb` to you enhanced component to override the default state management functions.
+You can pass `addBreadcrumb` or `removeBreadcrumb` to your enhanced component to override the default state management functions.
 
 ## Example Project
 
-Want to see this package in action? Checkout the [codesandbox]() to see a working example of checkout this repository and start the example application by running the following commands:
+Want to see this package in action? Have a look at [codesandbox](https://githubbox.com/thojou/react-breadcrumb/master/example) to see a working example or checkout this repository and start the example application by running the following commands:
 
 ```bash
 cd example/
