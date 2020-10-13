@@ -23,7 +23,8 @@
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "commit": "git-cz --disable-emoji"
+    "commit": "git-cz --disable-emoji",
+    "debug": "echo $GIT_PARAMS"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
@@ -78,7 +79,7 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "printenv"
+      "prepare-commit-msg": "echo $GIT_PARAMS"
     }
   }
 }
