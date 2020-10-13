@@ -78,7 +78,7 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "echo $message"
+      "prepare-commit-msg": "echo 'Hello ${message}'"
     }
   }
 }
