@@ -9,7 +9,7 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
-    "node": ">=10",
+    "node": ">=8",
     "npm": ">=5"
   },
   "scripts": {
@@ -70,7 +70,7 @@
   "dependencies": {},
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook || true"
+      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook --disable-emoji || true"
     }
   }
 }
