@@ -5,7 +5,5 @@ node_js:
 deploy:
   - provider: script
     skip_cleanup: true
-    on:
-      branch: release
     script:
       - npx semantic-release --dry-run
