@@ -53,6 +53,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "gh-pages": "^1.2.0",
     "git-cz": "^4.7.1",
+    "husky": "^4.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
@@ -71,6 +72,13 @@
   ],
   "dependencies": {},
   "release": {
-    "branches": ["release"]
+    "branches": [
+      "release"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && node_modules/.bin/git-cz --hook || true"
+    }
   }
 }
