@@ -79,7 +79,7 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "echo $HUSKY_GIT_PARAMS[0]"
+      "prepare-commit-msg": "echo ${HUSKY_GIT_PARAMS}[0]"
     }
   }
 }
