@@ -2,10 +2,10 @@ language: node_js
 node_js:
   - 10
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    on:
-      branch: release
-    script:
-      - npx semantic-release --dry-run
+#deploy:
+#  - provider: script
+#    skip_cleanup: true
+#    on:
+#      branch: release
+#    script:
+#      - npx semantic-release --dry-run
