@@ -3,7 +3,7 @@
 > A React component library for easy breadcrumb integration.
 
 [![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thojou/react-breadcrumb/semantic-release)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thojou/react-breadcrumb/Semantic-Release)
 
 @thojou/react-breadcrumb is a simple breadcrumb component library for [react](https://reactjs.org) apps.
 
