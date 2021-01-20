@@ -3,6 +3,7 @@
 > A React component library for easy breadcrumb integration.
 
 [![NPM](https://img.shields.io/npm/v/react-breadcrumb.svg)](https://www.npmjs.com/package/react-breadcrumb)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thojou/react-breadcrumb/semantic-release)
 
 @thojou/react-breadcrumb is a simple breadcrumb component library for [react](https://reactjs.org) apps.
 
@@ -43,7 +44,7 @@ import { Breadcrumb } from '@thojou/react-breadcrumb';
 export class Home extends Component {
   render () {
     return (
-      <Breadcrumb 
+      <Breadcrumb
         label="Home"
         path="/"
       >
@@ -129,7 +130,7 @@ This package ships with a built-in reducer and actions to update the represented
 
 > Note: If you are using react-redux for state management, wrapping your App inside `BreadcrumbStore` is not required.
 
-Create a BreadcrumbContainer component to connect the breadcrumb to the redux store and use this container component instead of the origin Breadcrumb component. 
+Create a BreadcrumbContainer component to connect the breadcrumb to the redux store and use this container component instead of the origin Breadcrumb component.
 
 ```jsx
 import {connect} from 'react-redux';
